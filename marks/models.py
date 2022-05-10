@@ -67,3 +67,75 @@ class student_hostel(models.Model):
 
     def __str__(self):
         return str(self.student_adm_no)
+
+
+
+class role(models.Model):
+    id = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=20)
+
+    def __str__(self):
+        return str(self.id)+" "+str(self.name)
+
+class user_profile(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True)
+    role_id = models.ForeignKey(role,on_delete = models.CASCADE,blank=True,null=True)
+
+    def __str__(self):
+        return str(self.user)
+
+class placement(models.Model):
+    user =models.ForeignKey(User,on_delete = models.CASCADE,blank=True,null=True)
+    company = models.CharField(max_length=50,blank=True,null=True)
+    ctc = models.CharField(max_length=25,blank=True,null=True)
+
+    def __str__(self):
+        return str(self.user)+" "+ str(self.company)
+
+class competitive_exams(models.Model):
+    user = models.ForeignKey(User,on_delete = models.CASCADE,blank=True,null=True)
+    exam = models.CharField(max_length=50, blank=True, null=True)
+    date_of_exam = models.DateField()
+    grade = models.CharField(max_length=10, blank=True, null=True)
+
+    def __str__(self):
+        return str(self.user)+" "+ str(self.exam)
+
+
+class subject(models.Model):
+    name = models.CharField(max_length=50,blank=True,null=True)
+    code = models.CharField(max_length=10,blank=True,null=True)
+    dept_id = models.ForeignKey(department,on_delete = models.CASCADE,blank=True,null=True)
+    description = models.CharField(max_length=50,blank=True,null=True)
+    credit = models.IntegerField(blank=True,null=True,default=3)
+
+
+    def __str__(self):
+        return str(self.name)+" "+str(self.code)
+
+class mentor_list(models.Model):
+    student = models.ForeignKey(User,related_name='mstudent',on_delete = models.CASCADE,blank=True,null=True)
+    faculty = models.ForeignKey(User,related_name='mfaculty',on_delete = models.CASCADE,blank=True,null=True)
+    sem = models.IntegerField(blank=True,null=True)
+    section =  models.CharField(max_length=5,blank=True,null=True)
+    ay = models.CharField(max_length=15,blank=True,null=True)
+
+    def __str__(self):
+        return str(self.student)+" "+ str(self.faculty)
+
+class mentor_data(models.Model):
+    student_meta = models.ForeignKey(mentor_list,on_delete = models.CASCADE,blank=True,null=True)
+    subject = models.ForeignKey(subject,on_delete = models.CASCADE,blank=True,null=True)
+    mse1_marks =  models.CharField(max_length=10,blank=True,null=True)
+    mse2_marks =  models.CharField(max_length=10,blank=True,null=True)
+    mse3_marks =  models.CharField(max_length=10,blank=True,null=True)
+    mse1_attndence =  models.CharField(max_length=10,blank=True,null=True)
+    mse2_attndence =  models.CharField(max_length=10,blank=True,null=True)
+    mse3_attndence =  models.CharField(max_length=10,blank=True,null=True)
+    la1 =  models.CharField(max_length=10,blank=True,null=True)
+    la2 =  models.CharField(max_length=10,blank=True,null=True)
+    final_cie =  models.CharField(max_length=10,blank=True,null=True)
+    final_attendence =  models.CharField(max_length=10,blank=True,null=True)
+
+    def __str__(self):
+        return str(self.student_meta)+" "+ str(self.subject)
