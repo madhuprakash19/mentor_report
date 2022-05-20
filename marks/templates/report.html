@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% load static %}
+{% block content %}
+
+<table class="table table-striped w3-animate-bottom " style="width: auto;">
+    <thead>
+      <tr>
+        <th>Subject</th>
+        <th>Mse 1</th>
+        <th>Mse 2</th>
+        <th>Mse 3</th>
+        <th>La 1</th>
+        <th>La 2</th>
+        <th>Final cie</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in temp %}
+      <tr>
+        <td>{{i.subject}}</td>
+        <td>{{i.mse1_marks}}</td>
+        <td>{{i.mse2_marks}}</td>
+        <td>{{i.mse3_marks}}</td>
+        <td>{{i.la1}}</td>
+        <td>{{i.la2}}</td>
+        <td>{{i.final_cie}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

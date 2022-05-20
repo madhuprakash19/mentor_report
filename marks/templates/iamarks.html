@@ -2,9 +2,8 @@
 {% load bootstrap3 %}
 {% load static %}
 {% block content %}
-<h1>Mapping</h1>
-<p>Download format <a href="{% static 'mapping_format.xlsx' %}" download>Click here</a></p>
-        <form action="{% url "marks:mapping" %}" method="post" enctype="multipart/form-data">
+<h1>IA Marks</h1>
+        <form action="{% url "marks:iamarks" %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <input type="file"
                    title="Upload excel file"

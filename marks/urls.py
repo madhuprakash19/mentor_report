@@ -9,5 +9,8 @@ urlpatterns = [
     path('logout/',auth_views.LogoutView.as_view(),name='logout'),
     path('home/',views.home,name='home'),
     path('mapping', views.mapping, name='mapping'),
+    path('iamarks', views.iamarks, name='iamarks'),
+    path('mentor', views.mentor, name='mentor'),
+    path('report/<int:id>', views.report, name='report'),
     path('',views.home,name='home'),
 ]

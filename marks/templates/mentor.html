@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% load static %}
+{% block content %}
+  <h1>Students Under you</h1>
+  <table class="table table-striped w3-animate-bottom " style="width: auto;">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Sem</th>
+          <th>Section</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in student %}
+        <tr>
+          <td><a href="{% url "marks:report" id=i.id %}">{{i.student}}</a></td>
+          <td>{{i.sem}}</td>
+          <td>{{i.section}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}

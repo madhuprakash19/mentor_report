@@ -19,12 +19,10 @@
   <a class="navbar-brand" href="https://nmit.ac.in/" target="_blank">NMIT</a>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Test</a>
-      </li>
+      <li class="nav-item active"><a class="nav-link" href="{% url 'marks:home' %}">Home <span class="sr-only">(current)</span></a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'marks:mapping' %}">Mapping</a></li>
+			<li><a class="nav-link" href="{% url 'marks:iamarks' %}">IA Marks</a></li>
+			<li><a class="nav-link" href="{% url 'marks:mentor' %}">Mentor</a></li>
     </ul>
       <a href="{% url 'marks:logout' %}"><button class="btn btn-outline-success my-2 my-sm-0" >Logout</button></a>
   </div>
