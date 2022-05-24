@@ -12,5 +12,6 @@ urlpatterns = [
     path('iamarks', views.iamarks, name='iamarks'),
     path('mentor', views.mentor, name='mentor'),
     path('report/<int:id>', views.report, name='report'),
+    path('marksedit/<int:id>', views.marksedit, name='marksedit'),
     path('',views.home,name='home'),
 ]

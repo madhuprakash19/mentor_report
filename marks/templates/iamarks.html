@@ -2,8 +2,9 @@
 {% load bootstrap3 %}
 {% load static %}
 {% block content %}
+<script src="{% static 'validate_excel.js' %}"></script>
 <h1>IA Marks</h1>
-        <form action="{% url "marks:iamarks" %}" method="post" enctype="multipart/form-data">
+        <form action="{% url "marks:iamarks" %}" method="post" enctype="multipart/form-data" onsubmit="return Validate(this);">
             {% csrf_token %}
             <input type="file"
                    title="Upload excel file"

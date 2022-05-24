@@ -2,7 +2,6 @@
 {% load bootstrap3 %}
 {% load static %}
 {% block content %}
-
 <table class="table table-striped w3-animate-bottom " style="width: auto;">
     <thead>
       <tr>
@@ -13,6 +12,7 @@
         <th>La 1</th>
         <th>La 2</th>
         <th>Final cie</th>
+        {% if flag %}<th>Edit</th>{% endif %}
       </tr>
     </thead>
     <tbody>
@@ -25,6 +25,7 @@
         <td>{{i.la1}}</td>
         <td>{{i.la2}}</td>
         <td>{{i.final_cie}}</td>
+        {% if flag %}<td><a href="{% url 'marks:marksedit' id=i.id %}">Click</a></td>{% endif %}
       </tr>
       {% endfor %}
     </tbody>

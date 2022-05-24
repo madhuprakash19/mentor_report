@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% load static %}
+{% block content %}
+
+<form action="{% url 'marks:marksedit' id=temp.id %}" method="post">
+  {% csrf_token %}
+    <table class="table table-striped">
+      <input type="hidden" name="mentor_data_id" value="{{temp.id}}">
+          <thead>
+            <tr>
+              <th class="w3-animate-bottom">Exam type</th>
+              <th class="w3-animate-bottom">Obtained Marks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="w3-animate-bottom">MSE 1</td>
+              <td class="w3-animate-bottom">
+                <input type="number" name="mse1_marks" value="{{temp.mse1_marks}}">
+              </td>
+            </tr>
+            <tr>
+              <td class="w3-animate-bottom">MSE 2</td>
+              <td class="w3-animate-bottom">
+                <input type="number" name="mse2_marks" value="{{temp.mse2_marks}}">
+              </td>
+            </tr>
+            <tr>
+              <td class="w3-animate-bottom">MSE 3</td>
+              <td class="w3-animate-bottom">
+                <input type="number" name="mse3_marks" value="{{temp.mse3_marks}}">
+              </td>
+            </tr>
+            <tr>
+              <td class="w3-animate-bottom">LA 1</td>
+              <td class="w3-animate-bottom">
+                <input type="number" name="la1" value="{{temp.la1}}">
+              </td>
+            </tr>
+            <tr>
+              <td class="w3-animate-bottom">LA 2</td>
+              <td class="w3-animate-bottom">
+                <input type="number" name="la2" value="{{temp.la2}}">
+              </td>
+            </tr>
+            <tr>
+              <td class="w3-animate-bottom">Final CIE</td>
+              <td class="w3-animate-bottom">
+                <input type="number" name="final_cie" value="{{temp.final_cie}}">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <input type="submit" value="Save marks" class="btn btn-primary">
+</form>
+
+{% endblock %}
